@@ -1,2 +1,2 @@
 # 42 completed projects
-no futher explanation.
+no further explanation.
