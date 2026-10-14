@@ -3,19 +3,19 @@
 /*                                                        :::      ::::::::   */
 /*   ft_memmove.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: mabd-al- <mabd-al-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/13 07:20:41 by marvin            #+#    #+#             */
-/*   Updated: 2026/10/13 07:20:41 by marvin           ###   ########.fr       */
+/*   Updated: 2026/10/14 16:19:58 by mabd-al-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void *ft_memmove(void *dest, const void *src, unsigned int n)
+void	*ft_memmove(void *dest, const void *src, unsigned int n)
 {
-	unsigned char *d;
-	unsigned char *s;
+	unsigned char	*d;
+	unsigned char	*s;
 
 	d = (unsigned char *)dest;
 	s = (unsigned char *)src;
@@ -24,12 +24,14 @@ void *ft_memmove(void *dest, const void *src, unsigned int n)
 	if (dest < src)
 	{
 		while (n--)
-			*d++ =  *s++;
-	} else {
+			*d++ = *s++;
+	}
+	else
+	{
 		d += n - 1;
 		s += n - 1;
 		while (n--)
-			*d-- =  *s--;
+			*d-- = *s--;
 	}
 	return (dest);
 }
