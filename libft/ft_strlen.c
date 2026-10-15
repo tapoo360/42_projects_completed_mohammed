@@ -6,13 +6,13 @@
 /*   By: mabd-al- <mabd-al-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/12 14:28:26 by mabd-al-          #+#    #+#             */
-/*   Updated: 2026/10/12 14:35:26 by mabd-al-         ###   ########.fr       */
+/*   Updated: 2026/10/14 20:56:36 by mabd-al-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_strlen(char *str)
+int	ft_strlen(const char *str)
 {
 	int	i;
 
