@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_split.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mabd-al- <mabd-al-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/15 11:03:13 by mabd-al-          #+#    #+#             */
-/*   Updated: 2026/10/15 18:37:03 by mabd-al-         ###   ########.fr       */
+/*   Updated: 2026/10/16 14:38:45 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,17 +62,19 @@ char	**ft_split(const char *s, char c)
 	int		count;
 	char	*token;
 	char	**arr_str;
+	char	*temp;
 
 	if (!s)
 		return (NULL);
-	count = count_words(s, c);
+	temp = (char *)s;
+	count = count_words(temp, c);
 	arr_str = (char **) malloc((sizeof(char *) * count) + 1);
 	if (!arr_str)
 		return (NULL);
 	i = 0;
 	while (i < count)
 	{
-		s = tokenizer(s, c, &token);
+		temp = tokenizer(temp, c, &token);
 		arr_str[i] = token;
 		i++;
 	}
