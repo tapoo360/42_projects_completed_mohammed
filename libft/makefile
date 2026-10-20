@@ -1,23 +1,22 @@
 CC = cc
 WFLAG = -Werror -Wextra -Wall
 NAME = libft.a
-SRC = $(shell ls ft_*.c)
-OBJ = (SRC:.c=.o)
+SRC := $(shell ls ft_*.c)
+OBJ = $(SRC:.c=.o)
+
+.PHONY: all fclean clean re
 
 all: $(NAME) clean
 
 $(NAME): $(OBJ)
-	ar  rcv $@ $?
+	ar rcv $@ $?
 
 $(OBJ): $(SRC)
 	$(CC) $(WFLAG) -c $?
 
-
-.PHONY: all fclean clean re
+re: fclean all
 
 clean:
 	rm -rf $(OBJ)
 fclean:
 	rm -rf $(OBJ) $(NAME)
-
-re: fclean all

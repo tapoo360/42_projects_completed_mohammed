@@ -12,12 +12,12 @@
 
 #include "libft.h"
 
-void ft_putnbr_fd(int n, int fd)
+void	ft_putnbr_fd(int n, int fd)
 {
-    char    *s;
-    int     count;
+	char	*s;
+	int		count;
 
-    s = ft_itoa(n);
-    count = ft_strlen(s);
-    write(fd, s, count);
+	s = ft_itoa(n);
+	count = ft_strlen(s);
+	write(fd, s, count);
 }

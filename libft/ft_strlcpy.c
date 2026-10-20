@@ -6,13 +6,13 @@
 /*   By: mabd-al- <mabd-al-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/13 20:17:32 by marvin            #+#    #+#             */
-/*   Updated: 2026/10/14 20:56:01 by mabd-al-         ###   ########.fr       */
+/*   Updated: 2026/10/20 20:11:50 by mabd-al-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_strlcpy(char *dest, const char *src, unsigned int size)
+int	ft_strlcpy(char *dest, const char *src, size_t size)
 {
 	unsigned int	i;
 
