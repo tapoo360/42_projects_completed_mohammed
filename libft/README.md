@@ -1,2 +1,2 @@
-# 42 completed projects
-no further explanation.
+## This project has been created as part of the 42 curriculum by `mabd-al-`
+
