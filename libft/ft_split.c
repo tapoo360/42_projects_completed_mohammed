@@ -6,78 +6,81 @@
 /*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/15 11:03:13 by mabd-al-          #+#    #+#             */
-/*   Updated: 2026/10/16 14:38:45 by marvin           ###   ########.fr       */
+/*   Updated: 2026/10/24 20:03:23 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static char	*tokenizer(char *s, char c, char **p)
+static size_t	count_words(char const *s, char c)
 {
-	int		i;
-	int		j;
-	char	*token;
-
-	i = 0;
-	j = 0;
-	while (s[j] != c)
-		j++;
-	token = (char *)malloc((j - i) + 1);
-	while (i < j)
-	{
-		token[i] = s[i];
-		i++;
-	}
-	token[i] = '\0';
-	*p = token;
-	while (s[i] == c)
-		i++;
-	return (s + i);
-}
-
-static int	count_words(char *s, char c)
-{
-	int	i;
-	int	count;
+	size_t	i;
+	size_t	count;
 
 	i = 0;
 	count = 0;
-	while (*s)
+	while (s[i])
 	{
-		if (*s != c && !i)
-		{
+		while (s[i] && s[i] == c)
+			i++;
+		if (s[i])
 			count++;
-			i = 1;
-		}
-		else if (*s == c)
-			i = 0;
-		s++;
+		while (s[i] && s[i] != c)
+			i++;
 	}
 	return (count);
 }
 
-char	**ft_split(const char *s, char c)
+static void	*free_split(char **split, size_t count)
 {
-	int		i;
-	int		count;
-	char	*token;
-	char	**arr_str;
-	char	*temp;
+	size_t	i;
 
-	if (!s)
-		return (NULL);
-	temp = (char *)s;
-	count = count_words(temp, c);
-	arr_str = (char **) malloc((sizeof(char *) * count) + 1);
-	if (!arr_str)
-		return (NULL);
 	i = 0;
 	while (i < count)
 	{
-		temp = tokenizer(temp, c, &token);
-		arr_str[i] = token;
+		free(split[i]);
 		i++;
 	}
-	arr_str[i] = NULL;
-	return (arr_str);
+	free(split);
+	return (NULL);
+}
+
+static int	fill_word(char **split, char const *s, char c, size_t *j)
+{
+	size_t	start;
+	size_t	len;
+
+	while (s[*j] && s[*j] == c)
+		(*j)++;
+	start = *j;
+	while (s[*j] && s[*j] != c)
+		(*j)++;
+	len = *j - start;
+	*split = ft_substr(s, start, len);
+	return (*split != NULL);
+}
+
+char	**ft_split(char const *s, char c)
+{
+	char	**split;
+	size_t	i;
+	size_t	j;
+	size_t	words;
+
+	if (!s)
+		return (NULL);
+	words = count_words(s, c);
+	split = malloc(sizeof(char *) * (words + 1));
+	if (!split)
+		return (NULL);
+	i = 0;
+	j = 0;
+	while (i < words)
+	{
+		if (!fill_word(&split[i], s, c, &j))
+			return (free_split(split, i));
+		i++;
+	}
+	split[i] = NULL;
+	return (split);
 }

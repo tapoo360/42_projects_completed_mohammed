@@ -3,49 +3,25 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strtrim.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mabd-al- <mabd-al-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/15 09:34:33 by mabd-al-          #+#    #+#             */
-/*   Updated: 2026/10/15 10:41:09 by mabd-al-         ###   ########.fr       */
+/*   Updated: 2026/10/24 16:56:52 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static int	how_may_of(char const *s, char const *set)
+char	*ft_strtrim(char const *s1, char *set)
 {
-	int	i;
-	int	count;
-
-	i = -1;
-	count = 0;
-	while (s[++i])
-	{
-		if (strchr(set, s[i]))
-			count++;
-	}
-	return (count);
-}
-
-char	*ft_strtrim(char const *s1, char const *set)
-{
-	char	*trimed_string;
-	int		strlen;
 	int		i;
-	int		count;
+	int		j;
 
-	if (s1 == NULL)
-		return (NULL);
-	strlen = ft_strlen(s1);
-	count = strlen - how_may_of(s1, set);
-	trimed_string = (char *) malloc(count + 1);
-	if (!trimed_string)
-		return (NULL);
-	i = -1;
-	count = 0;
-	while (s1[++i])
-		if (!strchr(set, s1[i]))
-			trimed_string[count++] = s1[i];
-	trimed_string[count] = '\0';
-	return (trimed_string);
+	j = ft_strlen(s1) - 1;
+	i = 0;
+	while (ft_strchr(set, s1[i]))
+		i++;
+	while(ft_strchr(set, s1[j]))
+		j--;
+	return (ft_substr(s1, i, j - i + 1));
 }

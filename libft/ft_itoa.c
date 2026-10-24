@@ -59,8 +59,8 @@ static void	*create_signed_string(int value)
 
 static void	if_less_than_zero(char number[], int digits, size_t value)
 {
-	int	i;
-	int	temp;
+	int		i;
+	size_t	temp;
 
 	i = digits;
 	while (i > 0)
@@ -74,8 +74,8 @@ static void	if_less_than_zero(char number[], int digits, size_t value)
 
 static void	if_greater_then_zero(char number[], int digits, size_t value)
 {
-	int	i;
-	int	temp;
+	int		i;
+	ssize_t	temp;
 
 	i = digits - 1;
 	while (i > -1)
@@ -89,15 +89,16 @@ static void	if_greater_then_zero(char number[], int digits, size_t value)
 
 char	*ft_itoa(int n)
 {
-	long int	temp;
-	char		*ret;
-	int			i;
+	long long		temp;
+	char			*ret;
+	int				i;
 
 	i = digit_number(n);
 	ret = (char *)create_signed_string(n);
 	if (n < 0)
 	{
-		temp = n * -1;
+		temp = n;
+		temp = -temp;
 		if_less_than_zero(ret, i, temp);
 		return (ret);
 	}

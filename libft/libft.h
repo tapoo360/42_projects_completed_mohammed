@@ -6,7 +6,7 @@
 /*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/14 19:11:16 by mabd-al-          #+#    #+#             */
-/*   Updated: 2026/10/21 18:26:45 by marvin           ###   ########.fr       */
+/*   Updated: 2026/10/24 07:19:33 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 # include <string.h>
 # include <stdio.h>
 # include <unistd.h>
+# include <stdint.h>
 
 int				ft_atoi(const char *s);
 
@@ -66,7 +67,7 @@ int				ft_memcmp(const void *s1, const void *s2, size_t n);
 
 char			**ft_split(const char *s, char c);
 
-char			*strtrim(const char *s, char *set);
+char			*ft_strtrim(const char *s, char *set);
 
 char			*ft_strjoin(const char *s1, const char *s2);
 
@@ -83,6 +84,8 @@ void			ft_putchar_fd(char c, int fd);
 void			ft_putendl_fd(char *s, int fd);
 
 void			ft_putnbr_fd(int n, int fd);
+
+void			ft_putstr_fd(char *s, int fd);
 
 char			*ft_itoa(int n);
 
