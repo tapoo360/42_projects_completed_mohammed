@@ -14,7 +14,10 @@
 
 static int	ft_abs(int nbr)
 {
-	return ((nbr < 0) ? -nbr : nbr);
+	if (nbr < 0)
+		return (-nbr);
+	else
+		(nbr);
 }
 
 void	ft_putnbr_fd(int n, int fd)
